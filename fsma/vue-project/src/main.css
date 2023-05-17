@@ -1,0 +1,18 @@
+/*Estilos globales*/
+html,body{
+    height: 100%;
+    margin: 0;
+    background-color: rgb(10, 10, 10);
+}
+
+#app{
+    position: relative;
+    background-color: rgb(10, 10, 10);
+    height: 100%;
+}
+.app-body{
+    padding-top: 5rem !important;
+    padding-bottom: 1.5rem;
+    background-color: rgb(10, 10, 10);
+    
+}
