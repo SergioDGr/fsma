@@ -1,7 +1,7 @@
 <template>
-    <!-- Si visualiza el buscador si lo utiliza-->
+    <!--Si visualiza el buscador si lo utiliza-->
     <router-view :key="this.$route.path"></router-view>
-    <!--Contendra el contenido del componente-->
+    <!--Contendrá el contenido del componente-->
     <div class="app-body container">
         <div class="m-1">
             <div class="container p-0 ">
@@ -11,7 +11,7 @@
                     <!--Barra vertical-->
                     <div class="col-sm-4 col-md-3 col-lg-2 my-3">
                         <div class="background-color">
-                            <!--Poster de la serie-->
+                            <!--Póster de la serie-->
                             <div v-if="serie.poster_path != null">
                                 <img class="rounded m-0 " :src="base_img + serie.poster_path ">
                             </div>
@@ -24,7 +24,7 @@
                                     <option value="droppeed">Eliminada</option>
                                 </select>
                             </div>
-                            <!--Informacion de la Serie-->
+                            <!--Información de la Serie-->
                             <div>
                                 <div class="serie-info"> 
                                     <!--Temporadas-->
@@ -42,17 +42,17 @@
                                         <h3 class="fs-4 text-warning">{{ $t('Serie.Status')}}</h3>
                                         <span>{{ this.getStatus(serie.status) }}</span>
                                     </div>
-                                    <!--La fecha que se emitio por primera vez-->
+                                    <!--La fecha que se emitió por primera vez-->
                                     <div v-if="serie.first_air_date != ''">
                                         <h3 class="fs-4 text-warning">{{ $t('Serie.Release_Date')}}</h3>
                                         <span>{{ serie.first_air_date }}</span>
                                     </div>
-                                    <!--Ultimo emisio que se hizo-->
+                                    <!--Ultimo emisión que se hizo-->
                                     <div v-if="serie.last_air_date != ''">
                                         <h3 class="fs-4 text-warning">{{ $t('Serie.Last_Air_Date')}}</h3>
                                         <span>{{ serie.last_air_date }}</span>
                                     </div>
-                                    <!--Duracion de los episodios-->
+                                    <!--Duración de los episodios-->
                                     <div v-if="serie.episode_run_time != 0">
                                         <h3 class="fs-4 text-warning">{{ $t('Serie.Run_Time') }}</h3>
                                         <div v-for="run_time in serie.episode_run_time " :key="run_time">
@@ -68,12 +68,12 @@
                                             </div>
                                         </div>
                                     </div>   
-                                    <!--El nombre origial de la serie si la hay-->
+                                    <!--El nombre original de la serie si la hay-->
                                     <div v-if="serie.original_name != serie.name">
                                         <h3 class="fs-4 text-warning">{{ $t('Serie.Original_Title') }}</h3>
                                         <span>{{ serie.original_name }}</span>
                                     </div>
-                                    <!--Las compañias que las produccieron-->
+                                    <!--Las compañías que las producieron-->
                                     <div>
                                         <h3 class="fs-4 text-warning">{{ $t('Serie.Production_Companies') }}</h3>
                                         <div class="mt-2" v-for="company in serie.production_companies" :key="company">
@@ -101,26 +101,26 @@
                         </div>
                         <!--Cast y Crew-->
                         <div  class="background-color col my-3">
-                            <!--Titulos-->
+                            <!--Títulos-->
                             <h2 class="text-warning text-start">
-                                <!--Boton que visualiza el Cast-->
+                                <!--Botón que visualiza el Cast-->
                                 <button @click="hiddenCrew" class="btn text-warning fs-3"> {{ $t('Serie.Cast')}}</button>
                                 \
-                                <!--Boton que visualiza el Crew-->
+                                <!--Botón que visualiza el Crew-->
                                 <button @click="crewVisible" class="btn text-warning fs-3">{{ $t('Serie.Crew')}}</button>
                             </h2>
                             <hr class="mt-0">
-                            <!--EL contenido del cast-->
+                            <!--El contenido del cast-->
                             <div v-if="!visibleCrew" class="row">
                                 <!--Cast-->
                                 <div class="col-md-6 col-lg-4 m-auto my-2" v-for="actor in cast.slice(0,this.cantVisibleCast)" :key="actor.id">
                                     <cast-card :name="actor.name" :character="actor.character" :profile_path="actor.profile_path" :image="base_img+actor.profile_path"></cast-card>
                                 </div>
-                                <!--Boton Para visualizar mas-->
+                                <!--Botón para visualizar mas-->
                                 <div v-if="this.cantVisibleCast < cast.length && cast.length > 9">
                                     <button class="btn btn-warning mt-3"  @click="this.castShowMore">{{$t('Serie.Show_More')}}</button>
                                 </div>
-                                <!--Boton Para visualizar menos-->
+                                <!--Botón para visualizar menos-->
                                 <div v-if="this.cantVisibleCast > 9 && this.cantVisibleCast >= cast.length">
                                     <button class="btn btn-warning mt-3"  @click="this.castDefaultShowed">{{$t('Serie.Show_Less')}}</button>
                                 </div>
@@ -131,11 +131,11 @@
                                 <div class="col-md-6  col-lg-4 m-auto  my-2" v-for="crew in crews.slice(0,this.cantVisibleCrew)" :key="crew.id">
                                     <crew-card :name="crew.name" :job="crew.job" :profile_path="crew.profile_path" :known_for_department="crew.known_for_department" :image="base_img+crew.profile_path"></crew-card>
                                 </div>
-                                <!--Boton Para visualizar mas-->
+                                <!--Botón Para visualizar mas-->
                                 <div v-if="this.cantVisibleCrew < crews.length && crews.length > 9">
                                     <button class="btn btn-warning mt-3"  @click="this.crewShowMore">{{$t('Serie.Show_More')}}</button>
                                 </div>
-                                <!--Boton Para visualizar menos-->
+                                <!--Botón Para visualizar menos-->
                                 <div v-if="this.cantVisibleCrew > 9 && this.cantVisibleCrew >= crews.length">
                                     <button class="btn btn-warning mt-3"  @click="this.crewDefaultShowed">{{$t('Serie.Show_Less')}}</button>
                                 </div>
@@ -173,7 +173,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Trailer-->
+                        <!--Tráiler-->
                         <div v-if="video != undefined && video != {}" class="background-color my-3 video embed-responsive embed-responsive-16by9 col-lg d-none d-lg-block ">
                             <h2 class="text-warning">{{ $t('Serie.Trailer')}}</h2>
                             <hr class="mt-0">

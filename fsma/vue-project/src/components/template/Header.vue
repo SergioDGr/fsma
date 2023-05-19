@@ -12,23 +12,24 @@
         <a class="text-decoration-none m-0 fs-5 text-light decoracionEnlace" data-bs-toggle="modal" data-bs-target="#exampleModal">EDITAR PERFIL</a>
       </div>
       <hr>
+      <!--Para cerrar sesión-->
       <button @click="logOut" data-bs-dismiss="offcanvas" class="btn btn-light">Log out</button>
     </div>
-   
   </div>
+  <!--Componente editar el perfil-->
   <editar-perfil :path="path" v-if="this.$user.value != null"></editar-perfil>
   <!--Navegador-->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid collapses">
-      <!--Boton para desplegar el navegador para pantallas pequeñas-->
+      <!--Botón para desplegar el navegador para pantallas pequeñas-->
       <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <!--El buscador para pantalla pequeñas-->
+      <!--El buscador para pantalla pequeña-->
       <search-bar class="d-lg-none" :routeName="currentRouteName "></search-bar>
       <!--Contenido del navegador-->
       <div class="collapse navbar-collapse row" id="navbarNav">
-        <!--El avatar del usuario si esta logeado-->
+        <!--El avatar del usuario si está iniciado sesión-->
         <div v-if="this.$user.value != null" class="col-lg-1 col-12 d-flex justify-content-center" id="navbarNav">
           <a class="py-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
             <img v-if="this.$user.value.image == '1.png'" class="rounded rounded-5 border border-light border-2 imagen" :src="path+'1.png'" alt="icono">
@@ -39,8 +40,9 @@
           </a>
         </div>
         <div class="col-lg">
+          <!--Pantalla pequeña-->
           <ul v-if="isScreenSmall" class="navbar-nav col d-flex justify-content-evenly text-center">
-            <!--Si visualizara el enlace login si no esta logeado-->
+            <!--SSi visualizara el enlace login si no está iniciado sesión-->
             <li v-if="this.$user.value == null" class="nav-item mt-5 mt-lg-0" >
               <router-link class="nav-link active style w-100" active-class="active" to="/login" ><b>Login</b></router-link>
             </li>
@@ -48,7 +50,7 @@
             <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#navbarNav">
               <router-link class="nav-link active style" active-class="active" to="/" ><b>{{ $t('Header.Home') }}</b></router-link>
             </li>
-            <!--Para ir a las peliculas-->
+            <!--Para ir a las películas-->
             <li class="nav-item" data-bs-toggle="collapse" data-bs-target="#navbarNav">
               <router-link class="nav-link active style" active-class="active" to="/movie"><b>{{ $t('Header.Movies') }}</b></router-link>
             </li>
@@ -57,8 +59,9 @@
               <router-link class="nav-link active style" active-class="active" to="/serie"><b>{{ $t('Header.Series') }}</b></router-link>
             </li>
           </ul>
+          <!--Pantalla Grande-->
           <ul v-else class="navbar-nav col d-flex justify-content-evenly text-center">
-            <!--Si visualizara el enlace login si no esta logeado-->
+            <!--Si visualizara el enlace login si no está iniciado sesión-->
             <li v-if="this.$user.value == null" class="nav-item w-100 mt-5 mt-lg-0">
               <router-link class="nav-link active style" active-class="active" to="/login" ><b>Login</b></router-link>
             </li>
@@ -66,7 +69,7 @@
             <li class="nav-item w-100">
               <router-link class="nav-link active style" active-class="active" to="/"><b>{{ $t('Header.Home') }}</b></router-link>
             </li>
-            <!--Para ir a las peliculas-->
+            <!--Para ir a las películas-->
             <li class="nav-item w-100">
               <router-link class="nav-link active style" active-class="active" to="/movie"><b>{{ $t('Header.Movies') }}</b></router-link>
             </li>
@@ -74,7 +77,7 @@
             <li class="nav-item w-100 mb-5 mb-lg-0">
               <router-link class="nav-link active style" active-class="active" to="/serie"><b>{{ $t('Header.Series') }}</b></router-link>
             </li>
-            <!--Para buscar series o peliculas-->
+            <!--Para buscar series o películas-->
             <li class="nav-item w-100 d-none d-lg-block">
                 <search-bar :routeName="currentRouteName "></search-bar>
             </li>
@@ -96,7 +99,7 @@
         isScreenSmall: !window.matchMedia("(min-width: 992px)").matches
       }
     },
-    //Guarda la routa actual
+    //Guarda la ruta actual
     props:{
       currentRouteName: String
     },
@@ -106,7 +109,7 @@
       editarPerfil: editarPerfil
     },
     methods:{
-      //Para salir de sesion
+      //Para salir de sesión
       logOut(){
         this.$user.value = null
         localStorage.clear();

@@ -26,7 +26,7 @@ export default{
     NavBar,
     FooterBar
   },
-  //Antes que se cree mira si el usuario esta logeado o no
+  //Antes que se cree mira si el usuario está iniciado sesión o no
   async beforeCreate(){
     let date = new Date().getTime();
     let expiredDate
@@ -45,13 +45,16 @@ export default{
       let pass = atob(localStorage.pass)
       this.$user.value = await validarUser(localStorage.user,pass)
       this.$i18n.locale = this.$user.value.language
+      this.$region.value = this.$user.value.region
     }else{
+      console.log(window.navigator.language);
       this.$i18n.locale = window.navigator.language.substring(0,2)
+      this.$region = 'ES'
     }
 
-    //this.$user.value = {username:'jesulin de ubrique',image:'2.png'}
+    //this.$user.value = {username:'jesulin de ubrique',image:'2.png',language: 'en',region:'ES'}
   },
-  //para utilizar los idiomas
+  //Para utilizar los idiomas
   setup(){
       const { t } = useI18n()
       return{ t }

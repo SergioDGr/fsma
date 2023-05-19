@@ -1,6 +1,6 @@
 import axios  from "axios";
 import { BD_PATH } from "../../config/env";
-//Consulta para validar el usuario y que pasa la informacion
+//Consulta para validar el usuario y que pasa la información
 export async function validarUser(email,pass){
     let user = null;
     await axios.get(BD_PATH +"login/"+email+"&"+pass)
@@ -17,7 +17,7 @@ export async function validarUser(email,pass){
     return user;
 
 }
-//Consulta para creal el usuario
+//Consulta para crear el usuario
 export async function crearUsuario(email,username,passwd,image,lang,region){
     let isUserCreated;
     await axios.post(BD_PATH +"register",{

@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(description = "Controlador DB", name = "Para peticiones a la base de datos")
 //Configuracion para vue
-@CrossOrigin(origins = "http://localhost:8080/", allowedHeaders = "*" )
+@CrossOrigin(origins = "http://localhost/", allowedHeaders = "*" )
 @RestController
 public class ControladorDB {
 	

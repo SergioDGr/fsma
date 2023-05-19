@@ -1,13 +1,13 @@
-<!--Componente que se visualiza cuando se le hace una busqueda-->
+<!--Componente que se visualiza cuando se le hace una búsqueda-->
 <template>
-    <!--Es visible el componente cuando se busca y siempre que este el mouse encima-->
+    <!--Es visible el componente cuando se busca y siempre que este el ratón encima-->
     <div v-if="this.$SearchVisible.value || this.$SearchBarVisible.value"  class="top-10 position-fixed bg-dark front-show end-0 w-100 pt-4 pb-3" v-on:mouseleave="mouseLeave" v-on:mouseenter="mouseEnter">
         <div id="search" class="container">
             <!--Cuando se esta cargando-->
             <div v-if="cargando" class="text-center fw-bold fs-4">
                 {{ $t('Search.Searching') }}
             </div>
-            <!--Las busquedas para las peliculas-->
+            <!--Las búsquedas para las películas-->
             <div v-if="!cargando && pelisPattern != 0">
                 <h4 class="m-0 text-center fw-bold text-info">{{$t('Search.Movies')}}</h4>
                 <hr class="mt-2 mb-2">
@@ -20,7 +20,7 @@
             </div>
             
             <hr class="mt-2 mb-2" v-if="!cargando && seriesPattern != 0">
-            <!--Busquedas para Series-->
+            <!--Búsquedas para Series-->
             <div v-if="!cargando && seriesPattern != 0">
                 <h4 class="m-0 text-center fw-bold text-info">{{$t('Search.Series')}}</h4>
                 <hr class="mt-2 mb-2">

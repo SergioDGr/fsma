@@ -1,4 +1,4 @@
-<!--Barra del buscador-->
+<!--Barra del búscador-->
 <template>
     <div class="d-flex justify-content-center">
         <input class="rounded-2 m-2 col-lg" name='buscar' type="text" v-model="searchQuery" v-on:keydown.enter="upEnter" :placeholder="$t('SearchBar')" @focusin="siFocus" @focusout="noFocus" autocomplete="off"/>
@@ -25,7 +25,7 @@ export default {
         }
     //Metodos
     },methods:{
-        //Cuando la busqueda cambia
+        //Cuando la búsqueda cambia
         buscadorChange(){
             if (this.cambios){
                 this.count = 0
@@ -63,7 +63,7 @@ export default {
         }
     },
     //Cada vez que actualiza el componente Comprueba ene el buscador si hay algo escrito
-    //Y despues visualiza el contenido llendo a la ruta
+    //Y despues visualiza el contenido yendo a la ruta
      updated(){
         if(this.searchQuery != ''){
              this.changeRoute();
@@ -75,7 +75,7 @@ export default {
             }
         }
     },
-    //Antes de que se actualiza el componente comprueta la ruta
+    //Antes de que se actualiza el componente comprueba la ruta
     beforeUpdate(){
         if(this.routeName == 'Home'){
             this.count = 0

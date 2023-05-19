@@ -1,4 +1,4 @@
-/* Para configurar el enroutado para las paginas */
+/* Para configurar el enrutado para las páginas */
 import { createRouter, createWebHistory } from "vue-router";
 //Los componentes para las rutas
 import Home from './components/home/Home.vue'
@@ -9,7 +9,7 @@ import Series from './components/series/viewSeries.vue'
 import Serie from './components/series/Serie.vue'
 import Login from './components/auth/login.vue'
 import Register from './components/auth/register.vue'
-//El unrutamientos y los componentes que se visualizan
+//Los enrutamientos y los componentes que se visualizan
 const routes = [
   { path: '/', component: Home , name:'Home',children:[
     { path:'search/:query', name:'SearchInMain', component: Search, meta: { parent: 'Home'}},
@@ -45,7 +45,7 @@ const routes = [
   { path:'/register', name:'Register', component: Register},
   { path: '/:pathMatch(.*)*', redirect: '/'}
 ];
-//Crea el historico
+//Crea el histórico
 const history = createWebHistory();
 //Crea el router
 const router = createRouter({

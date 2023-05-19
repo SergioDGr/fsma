@@ -1,4 +1,4 @@
-<!--Componente que se añade a otros para la visualizacion de las series-->
+<!--Componente que se añade a otros para la visualización de las series-->
 <template>
     <!--Imagen-->
     <router-link :to="{ name:'Serie',params:{id: id} }" >

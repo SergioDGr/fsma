@@ -23,7 +23,7 @@ import movieCard from './MovieCard.vue';
 export default {
     data(){
         return{
-            movies: this.$store.state.movies,
+            movies: [],
             base_img: API_IMG_URL,
             page: 1,
             pelisGuardadas: false

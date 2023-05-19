@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 const path = require('path')
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ command, mode })=>({
   server:{
     port: 8080,
     hot: true,
@@ -15,6 +15,9 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '~bootstrap':path.resolve(__dirname, 'node_modules/bootstrap')
     }
-  }
-})
+  },
+  esbuild:{
+    drop: mode === 'production' ? ['console', 'debugger'] : [],
+  },
+}))
  

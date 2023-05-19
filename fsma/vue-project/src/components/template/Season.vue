@@ -1,7 +1,7 @@
 <template>
     <!--La temporada-->
     <div class="row my-3">
-        <!--Se visualiza la poster y el titulo de la temporada-->
+        <!--Se visualiza el póster y el título de la temporada-->
         <div :class="{'col-md-6 col-lg-3 ': this.temporadaVisible}">
             <a @click="visualizar">
                 <div>
@@ -11,7 +11,7 @@
                 <h4>{{ season.name }}</h4>
             </a>
         </div>
-        <!--Al darle click al boton visualiza informacion de la pelicula-->
+        <!--Al darle clic al botón, visualiza información de la película-->
         <div class="col-9" v-if="this.temporadaVisible">
             <p class="text-start"><b>{{ $t('Season.Release_Date') }}</b>: {{ season.air_date }}</p>
             <p class="text-start" v-if="season.overview != ''"><b>{{ $t('Season.Overview') }}</b>: {{ season.overview }}</p>
@@ -39,13 +39,13 @@ export default{
         }
     },
     methods:{
-        //Para visualizar Informacio para la temporada
+        //Para visualizar Información para la temporada
         visualizar(){
             if(this.visualizarInfoTemporada){
                 this.visualizarInfoTemporada(this.idx);
             }
         },
-        //Guarda el indice y al hacerlo visualiza los episodios
+        //Guarda el índice y al hacerlo visualiza los episodios
         guardarIndex(){
             if(this.guardarIndexSeason){
                 this.guardarIndexSeason(this.idx+1);

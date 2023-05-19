@@ -1,4 +1,4 @@
-<!--El componente donde se muestra las series-->
+<!--El componente donde se muestran las series-->
 <template>
     <!--Para visualizar el componente buscador-->
     <router-view :key="this.$route.path"></router-view>
@@ -46,11 +46,11 @@ export default {
             this.page++;
             this.seriesGuardadas = false;
         },
-        //Metodo que añade al evento scroll la funcion scroll
+        //Método que añade al evento scroll la función scroll
         getNextSeries(){
             window.addEventListener('scroll',this.scroll, false)
         },
-        //Al scrollear hasta el final pedira mas para añadir series
+        //Al scrollear hasta el final pedirá mas para añadir series
         scroll(){
             let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.scrollHeight;        
             if (bottomOfWindow && this.seriesGuardadas == false) {
